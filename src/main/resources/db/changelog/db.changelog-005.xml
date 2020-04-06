@@ -5,7 +5,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <changeSet author="Pavel Jetensky" id="16">
-        <!--<dropColumn tableName="item" columnName="row_idx"/>-->
+        <dropColumn tableName="item" columnName="row_idx"/>
     </changeSet>
 
 </databaseChangeLog>
