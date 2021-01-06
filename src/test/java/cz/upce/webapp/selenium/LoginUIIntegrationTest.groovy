@@ -19,7 +19,9 @@ import static org.junit.Assert.assertNotNull;
  * @author Martin Volenec / st46661
  */
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(
+        webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
+)
 public class LoginUIIntegrationTest extends Specification
 {
     @Autowired private LoginPage loginPage;
