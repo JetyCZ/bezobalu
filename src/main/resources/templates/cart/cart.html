@@ -82,20 +82,28 @@
             <li>Celková cena bez DPH: <span th:text="${#numbers.formatDecimal(total,0,1)}"></span>,- Kč</li>
             <li>Celková cena s DPH: <span th:text="${#numbers.formatDecimal(totalTax,0,1)}"></span>,- Kč</li>
 
-                
-            <li th:if="(${freeTransport}-${totalTax}) &gt; 0">
+
+
+            <li th:if="$freeTransport and ((${freeTransport}-${totalTax}) &gt; 0)">
                     <b style="color:red">
                         <span th:text="'K dopravě zdarma (nad ' + ${freeTransport} + ') zbývá:'"></span>
                         <span th:text="${#numbers.formatDecimal(freeTransport-totalTax,0,1)} + ',- Kč'"></span>
                     </b>
             </li>
 
-            <li th:if="${freeTransport}-${totalTax} &lt; 0">
+            <li th:if="$freeTransport? and (${freeTransport}-${totalTax} &lt; 0)">
                 <b style="color:green">
                     <span th:text="'Doprava zdarma (nad ' + ${freeTransport} + ') navíc:'"></span>
                     <span th:text="${#numbers.formatDecimal(totalTax - freeTransport,0,1)} + ',- Kč'"></span>
                 </b>
             </li>
+
+            <li th:unless="$freeTransport?">
+                <b style="color:brown">
+                    <span th:text="'Doprava zdarma pro tohoto dodavatele není uvedena"></span>
+                </b>
+            </li>
+
             </ul>
         </div>
     </div>
